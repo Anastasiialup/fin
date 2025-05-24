@@ -1,4 +1,3 @@
-import { pageStyle } from 'app/page.style';
 import { auth } from 'lib/auth';
 
 const Home = async () => {
