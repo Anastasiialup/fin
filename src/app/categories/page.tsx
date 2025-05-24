@@ -1,6 +1,9 @@
-const Page = async () => {
+import CategoriesList from 'components/CategoriesList';
+
+export default function CategoriesPage() {
   return (
-    <div>This is categories page</div>
+    <main className="p-6">
+      <CategoriesList />
+    </main>
   );
-};
-export default Page;
+}

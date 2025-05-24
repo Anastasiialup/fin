@@ -1,14 +1,21 @@
-import { auth } from '../../lib/auth';
-import AddGoal from 'components/AddGoal/AddGoal';
+'use client';
+
+import { useState } from 'react';
+import AddGoalClientWrapper from 'components/AddGoal/AddGoalClientWrapper';
 import GoalsList from 'components/GoalsList';
 
-const Page = async () => {
-  const session = await auth();
+const Page = () => {
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const handleGoalCreated = () => {
+    setRefreshTrigger((prev) => prev + 1);
+  };
+
   return (
     <div>
-      This is goals page
-      <GoalsList/>
-      <AddGoal userId={ session?.user?.id as string } />
+      <h1>This is goals page</h1>
+      <GoalsList key={ refreshTrigger } />
+      <AddGoalClientWrapper onGoalCreated={ handleGoalCreated } />
     </div>
   );
 };

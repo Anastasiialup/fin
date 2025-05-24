@@ -3,12 +3,15 @@
 import { FC, useState } from 'react';
 import { GoalStatuses } from 'basics/types/goal.type';
 import { createGoal } from 'lib/api/goals';
+import { toast } from 'react-toastify';
+import { errorToast, successToast } from '../../basics/utils/toast';
 
 type AddGoalPropsType = {
   userId: string;
+  onGoalCreated: () => void;
 };
 
-const AddGoal: FC<AddGoalPropsType> = ({ userId }) => {
+const AddGoal: FC<AddGoalPropsType> = ({ userId, onGoalCreated }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -34,9 +37,10 @@ const AddGoal: FC<AddGoalPropsType> = ({ userId }) => {
       setDescription('');
       setPrice('');
       setCurrency('UAH');
-      alert('Ціль створено!');
+      successToast('Ціль створено!');
+      onGoalCreated();
     } catch {
-      alert('Помилка під час створення цілі');
+      errorToast('Помилка під час створення цілі');
     }
   };
 

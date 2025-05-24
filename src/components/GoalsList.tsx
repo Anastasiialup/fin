@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Goal } from 'basics/types/goal.type';
-import { getGoals, deleteGoal } from 'lib/api/goals';
+import { Goal, GoalStatuses } from 'basics/types/goal.type';
+import { errorToast, warningToast } from 'basics/utils/toast';
+import { getGoals, deleteGoal, updateGoal } from 'lib/api/goals';
 
 const GoalsList = () => {
   const [goals, setGoals] = useState<Goal[]>([]);
@@ -27,9 +28,19 @@ const GoalsList = () => {
   const handleDelete = async (id: string) => {
     try {
       await deleteGoal(id);
+      warningToast('Ціль було успішно видалено');
       setGoals((prev) => prev.filter((goal) => goal.id !== id));
     } catch {
-      alert('Помилка під час видалення цілі');
+      errorToast('Помилка під час видалення цілі');
+    }
+  };
+
+  const handleComplete = async (id: string) => {
+    try {
+      const updated = await updateGoal(id, { status: GoalStatuses.achieved });
+      setGoals((prev) => prev.map((goal) => (goal.id === id ? updated : goal)));
+    } catch {
+      errorToast('Не вдалося оновити статус цілі');
     }
   };
 
@@ -52,11 +63,11 @@ const GoalsList = () => {
                   <p
                     className={
                       `text-sm ${
-                        goal.status === 'achieved' ? 'text-green-600' : 'text-orange-600'
+                        goal.status === GoalStatuses.achieved ? 'text-green-600' : 'text-orange-600'
                       }`
                     }
                   >
-                      Статус: { goal.status === 'achieved' ? 'Досягнута' : 'Не завершена' }
+                          Статус: { goal.status === GoalStatuses.achieved ? 'Досягнута' : 'Не завершена' }
                   </p>
                   {
                     goal.price && (
@@ -64,11 +75,22 @@ const GoalsList = () => {
                     )
                   }
 
+                  {
+                    goal.status !== GoalStatuses.achieved && (
+                      <button
+                        onClick={ () => handleComplete(goal.id) }
+                        className="mt-2 text-sm text-blue-600 hover:underline"
+                      >
+                              Позначити як виконану
+                      </button>
+                    )
+                  }
+
                   <button
                     onClick={ () => handleDelete(goal.id) }
                     className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-sm"
                   >
-                      Видалити
+                          Видалити
                   </button>
                 </li>
               ))

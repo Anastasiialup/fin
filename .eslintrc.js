@@ -80,6 +80,7 @@ module.exports = {
     '@typescript-eslint/indent': ['error', 2, {
       SwitchCase: 1,
     }],
+    'linebreak-style': 'off',
     '@typescript-eslint/member-delimiter-style': ['error'],
     '@typescript-eslint/no-explicit-any': ['error', {
       ignoreRestArgs: true,
