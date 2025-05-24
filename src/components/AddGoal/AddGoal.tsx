@@ -1,10 +1,9 @@
 'use client';
 
 import { FC, useState } from 'react';
+import { errorToast, successToast } from '../../basics/utils/toast';
 import { GoalStatuses } from 'basics/types/goal.type';
 import { createGoal } from 'lib/api/goals';
-import { toast } from 'react-toastify';
-import { errorToast, successToast } from '../../basics/utils/toast';
 
 type AddGoalPropsType = {
   userId: string;

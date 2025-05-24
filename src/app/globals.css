@@ -8,8 +8,76 @@
 
 a {
   text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
+body {
+  background-image: url('https://static.wixstatic.com/media/aafcc4_88e3f58195dc4a2d8c0a9f9e26b18984~mv2.png/v1/fill/w_1264,h_713,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/Picsart_24-06-08_16-51-27-432.png');
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: "Comic Sans MS", sans-serif;
+}
+
+/* Хедер */
+header {
+  background-color: #705d5d;
+  color: #f1e9e9;
+  padding: 15px 15px 25px 15px; /* Зменшені відступи зверху і знизу */  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 1.8rem;  /* Збільшений розмір тексту */
+  font-weight: bold;  /* Жирний текст */
+}
+
+/* Навігація */
+nav {
+  background-color: #eae3e3;
+  padding: 5px 0; /* Зменшений вертикальний падінг */
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Зменшений відступ між посиланнями */
+  flex-wrap: wrap;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* Активне посилання навігації */
+nav a.active {
+  background-color: #c3bfb6;
+  color: #403727;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+nav a {
+  color: #333;
+  padding: 10px 18px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #d2c9c9;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* Футер */
+footer {
+  background-color: #705d5d;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  width: 90%;
+  margin: 40px auto 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  font-weight: 500;
+}
+
+/* Toast */
 .Toastify .Toastify__toast--success {
   background: #79b981;
 }

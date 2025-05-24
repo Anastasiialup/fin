@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { contentStyle, wrapperStyle } from 'app/page.style';
 import './globals.css';
+import AppFooter from 'components/AppFooter';
 import AppHeader from 'components/AppHeader';
 
 export const metadata: Metadata = {
@@ -12,18 +13,16 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <html lang="en">
+    <html lang="uk">
       <body>
         <SessionProvider>
-          <ToastContainer theme='colored' />
+          <ToastContainer theme="colored" />
           <div style={ wrapperStyle }>
-            <AppHeader/>
-            <div style={ contentStyle }>
-              <div>
-                { children }
-              </div>
-            </div>
-            <div>Footer</div>
+            <AppHeader />
+            <main style={ contentStyle }>
+              { children }
+            </main>
+            <AppFooter />
           </div>
         </SessionProvider>
       </body>
