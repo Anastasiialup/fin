@@ -1,8 +1,8 @@
 'use client';
 
 import { FC } from 'react';
-import { FinancialRecord } from 'basics/types/financial-records.type';
 import EditFinancialRecord from './EditFinancialRecord';
+import { FinancialRecord } from 'basics/types/financial-records.type';
 
 type EditFinancialRecordClientWrapperProps = {
   record: FinancialRecord;

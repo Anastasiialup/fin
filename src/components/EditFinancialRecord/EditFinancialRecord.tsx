@@ -1,8 +1,8 @@
 'use client';
 
 import { FC, useEffect, useState } from 'react';
-import { FinancialRecord } from 'basics/types/financial-records.type';
 import { errorToast, successToast } from '../../basics/utils/toast';
+import { FinancialRecord } from 'basics/types/financial-records.type';
 import { updateFinancialRecord } from 'lib/api/financial-records';
 
 type EditFinancialRecordProps = {
