@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       status: body.status,
       userId: body.userId,
       description: body.description ?? null,
-      photo: body.photo ?? null,
+      photo: body.photo ?? `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}/goals/default.png`,
     }).returning();
 
     return Response.json(newGoal[0]);

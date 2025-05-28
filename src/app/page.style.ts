@@ -13,7 +13,6 @@ export const wrapperStyle: CSSProperties = {
 export const contentStyle: CSSProperties = {
   position: 'relative',
   flex: 3,
-  paddingTop: '150px',
   width: '100%',
   boxSizing: 'border-box',
 };

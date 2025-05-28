@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Goal, GoalStatuses } from 'basics/types/goal.type';
-import { errorToast, warningToast } from 'basics/utils/toast';
+import { errorToast, warningToast, successToast } from 'basics/utils/toast';
 import { getGoals, deleteGoal, updateGoal } from 'lib/api/goals';
 
 const GoalsList = () => {
@@ -11,7 +12,7 @@ const GoalsList = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchGoals() {
+    const fetchGoals = async () => {
       try {
         const data = await getGoals();
         setGoals(data);
@@ -20,7 +21,7 @@ const GoalsList = () => {
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     fetchGoals();
   }, []);
@@ -39,6 +40,7 @@ const GoalsList = () => {
     try {
       const updated = await updateGoal(id, { status: GoalStatuses.achieved });
       setGoals((prev) => prev.map((goal) => (goal.id === id ? updated : goal)));
+      successToast('Ціль досягнута!');
     } catch {
       errorToast('Не вдалося оновити статус цілі');
     }
@@ -57,41 +59,48 @@ const GoalsList = () => {
           <ul className="space-y-2">
             {
               goals.map((goal) => (
-                <li key={ goal.id } className="border p-4 rounded-lg shadow-sm relative">
-                  <h3 className="text-lg font-bold">{ goal.name }</h3>
-                  { goal.description && <p>{ goal.description }</p> }
-                  <p
-                    className={
-                      `text-sm ${
-                        goal.status === GoalStatuses.achieved ? 'text-green-600' : 'text-orange-600'
-                      }`
+                <li
+                  key={ goal.id }
+                  className="border p-4 rounded-lg shadow-sm flex items-center gap-4"
+                >
+                  <Image
+                    src={
+                      goal.photo
+                            || `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}/goals/default.png`
                     }
-                  >
-                          Статус: { goal.status === GoalStatuses.achieved ? 'Досягнута' : 'Не завершена' }
-                  </p>
-                  {
-                    goal.price && (
-                      <p className="text-sm text-gray-400">Ціна: { goal.price }</p>
-                    )
-                  }
-
-                  {
-                    goal.status !== GoalStatuses.achieved && (
-                      <button
-                        onClick={ () => handleComplete(goal.id) }
-                        className="mt-2 text-sm text-blue-600 hover:underline"
-                      >
-                              Позначити як виконану
-                      </button>
-                    )
-                  }
-
-                  <button
-                    onClick={ () => handleDelete(goal.id) }
-                    className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-sm"
-                  >
-                          Видалити
-                  </button>
+                    alt={ goal.name }
+                    width={ 64 }
+                    height={ 64 }
+                    className="rounded-full object-cover"
+                  />
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold">{ goal.name }</h3>
+                    <p className="text-gray-600">{ goal.description }</p>
+                    <p className="text-sm text-gray-500">
+                      { goal.price } { goal.currency }
+                    </p>
+                    <p className="text-sm text-gray-400">
+                        Статус: { goal.status === GoalStatuses.achieved ? 'Досягнута' : 'Не завершена' }
+                    </p>
+                  </div>
+                  <div className="flex gap-2">
+                    {
+                      goal.status !== GoalStatuses.achieved && (
+                        <button
+                          onClick={ () => handleComplete(goal.id) }
+                          className="text-sm bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+                        >
+                            Завершити
+                        </button>
+                      )
+                    }
+                    <button
+                      onClick={ () => handleDelete(goal.id) }
+                      className="text-sm bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
+                    >
+                        Видалити
+                    </button>
+                  </div>
                 </li>
               ))
             }

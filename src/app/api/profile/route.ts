@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+// app/api/profile/route.ts
 import bcrypt from 'bcrypt';
 import { eq } from 'drizzle-orm';
 import type { InferInsertModel } from 'drizzle-orm';
@@ -14,6 +14,7 @@ export async function PUT(req: Request) {
 
   const updates: Partial<NewUser> = {
     username: data.username,
+    profileImage: data.profileImage,
   };
 
   if (data.password && data.password.length > 0) {

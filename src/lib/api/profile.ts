@@ -6,6 +6,7 @@ export async function fetchProfile(id: number): Promise<Profile> {
   return res.json();
 }
 
+// lib/api/profile.ts
 export async function updateProfile(data: Partial<Profile>): Promise<Profile> {
   const res = await fetch('/api/profile', {
     method: 'PUT',

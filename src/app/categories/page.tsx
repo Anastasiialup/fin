@@ -12,10 +12,17 @@ export default function CategoriesPage() {
   };
 
   return (
-    <main className="p-6 space-y-6">
+    <main className="p-6 space-y-6 max-w-5xl mx-auto">
       <h1 className="text-3xl font-bold text-center">Категорії</h1>
-      <AddCategoryClientWrapper onCategoryCreated={ handleCategoryCreated } />
-      <CategoriesList key={ refreshTrigger } />
+
+      <section className="bg-white rounded shadow p-4">
+        <h2 className="text-xl font-semibold mb-2">Додати категорію</h2>
+        <AddCategoryClientWrapper onCategoryCreated={ handleCategoryCreated } />
+      </section>
+
+      <section className="bg-white rounded shadow p-4">
+        <CategoriesList key={ refreshTrigger } />
+      </section>
     </main>
   );
 }

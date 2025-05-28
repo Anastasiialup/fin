@@ -21,7 +21,11 @@ const HomePage = () => {
       <section>
         <h2 className="text-2xl font-semibold mb-2">Топ-10 корисних посилань:</h2>
         <ol className="list-decimal list-inside space-y-1">
-          <li><a href="https://www.budget.gov.ua/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Бюджет України</a></li>
+          <li>
+            <a href="https://www.budget.gov.ua/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+                  Бюджет України
+            </a>
+          </li>
           <li><a href="https://www.minfin.com.ua/ua/currency/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Курс валют – Мінфін</a></li>
           <li><a href="https://www.finance.ua/ua/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Фінансові новини – Finance.ua</a></li>
           <li><a href="https://privatbank.ua/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Приват24</a></li>

@@ -8,7 +8,7 @@ const Page = () => {
   const { handleCancelAuthForm, handleLoginAuthForm } = useLogin();
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center">
       <AuthForm
         submitCallback={ handleLoginAuthForm }
         cancelCallback={ handleCancelAuthForm }

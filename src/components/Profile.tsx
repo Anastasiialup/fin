@@ -1,3 +1,5 @@
+// components/Profile.tsx
+
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -15,14 +17,16 @@ const ProfileComponent: FC<Props> = ({ profile, onProfileUpdated }) => {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    await signOut({ redirect: false }); // не буде редіректу
-    router.push('/login'); // самі робимо редірект після signOut
+    await signOut({ redirect: false });
+    router.push('/login');
   };
+
+  const profileImageUrl = profile.profileImage || `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}/default.png`;
 
   return (
     <div className="space-y-4">
       <img
-        src={ profile.profileImage || '/images/default.png' }
+        src={ profileImageUrl }
         alt="Profile"
         className="w-32 h-32 rounded-full object-cover"
       />

@@ -15,18 +15,44 @@ const AddGoal: FC<AddGoalPropsType> = ({ userId, onGoalCreated }) => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [currency, setCurrency] = useState('UAH');
+  const [file, setFile] = useState<File | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+    let photoUrl: string | null = null;
+
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const res = await fetch('/api/uploadgoals', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          photoUrl = data.url;
+        } else {
+          errorToast(data.error || 'Помилка завантаження зображення');
+          return;
+        }
+      } catch {
+        errorToast('Помилка під час завантаження зображення');
+        return;
+      }
+    }
+
     const newGoal = {
       name,
       description,
       price: parseFloat(price),
       currency,
       status: GoalStatuses.not_completed,
-      photo: null,
+      photo: photoUrl,
       userId,
     };
 
@@ -36,6 +62,7 @@ const AddGoal: FC<AddGoalPropsType> = ({ userId, onGoalCreated }) => {
       setDescription('');
       setPrice('');
       setCurrency('UAH');
+      setFile(null);
       successToast('Ціль створено!');
       onGoalCreated();
     } catch {
@@ -92,6 +119,16 @@ const AddGoal: FC<AddGoalPropsType> = ({ userId, onGoalCreated }) => {
           <option value="USD">$ USD</option>
           <option value="EUR">€ EUR</option>
         </select>
+      </div>
+
+      <div>
+        <label className="block text-gray-700 font-medium mb-1">Зображення</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={ (e) => setFile(e.target.files?.[0] || null) }
+          className="w-full"
+        />
       </div>
 
       <button
