@@ -15,4 +15,9 @@ export const contentStyle: CSSProperties = {
   flex: 3,
   width: '100%',
   boxSizing: 'border-box',
+  maxWidth: '85%',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  paddingTop: '2rem',
+  paddingBottom: '2rem',
 };
