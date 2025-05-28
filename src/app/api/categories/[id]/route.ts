@@ -3,10 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '../../../../../database/drizzle';
 import { categories } from '../../../../../database/schema';
 
-export async function PATCH(req: NextRequest, context: { params: { id: string } }) {
+export async function PATCH(req: NextRequest) {
   try {
-    const { params } = context;
-    const id = Number(params.id);
+    const url = req.nextUrl;
+    const id = Number(url.pathname.split('/').pop()); // витягуємо id з URL
+
     if (Number.isNaN(id)) {
       return new Response('Invalid ID', { status: 400 });
     }
@@ -29,10 +30,11 @@ export async function PATCH(req: NextRequest, context: { params: { id: string } 
   }
 }
 
-export async function DELETE(req: NextRequest, context: { params: { id: string } }) {
+export async function DELETE(req: NextRequest) {
   try {
-    const { params } = context;
-    const id = Number(params.id);
+    const url = req.nextUrl;
+    const id = Number(url.pathname.split('/').pop()); // теж саме для DELETE
+
     if (Number.isNaN(id)) {
       return new Response('Invalid ID', { status: 400 });
     }
