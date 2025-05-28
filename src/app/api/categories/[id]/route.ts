@@ -6,7 +6,7 @@ import { categories } from '../../../../../database/schema';
 export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
   try {
     const id = Number(params.id);
-    if (isNaN(id)) {
+    if (Number.isNaN(id)) {
       return new Response('Invalid ID', { status: 400 });
     }
 
@@ -31,7 +31,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
   try {
     const id = Number(params.id);
-    if (isNaN(id)) {
+    if (Number.isNaN(id)) {
       return new Response('Invalid ID', { status: 400 });
     }
 

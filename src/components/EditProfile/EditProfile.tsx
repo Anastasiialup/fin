@@ -1,5 +1,3 @@
-// components/EditProfile/EditProfile.tsx
-
 'use client';
 
 import { FC, useState } from 'react';
@@ -15,6 +13,7 @@ const EditProfile: FC<Props> = ({ profile, onSuccess }) => {
   const [username, setUsername] = useState(profile.username);
   const [password, setPassword] = useState('');
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -23,6 +22,7 @@ const EditProfile: FC<Props> = ({ profile, onSuccess }) => {
   };
 
   const handleSubmit = async () => {
+    setError(null);
     try {
       let profileImageUrl = profile.profileImage;
 
@@ -46,7 +46,7 @@ const EditProfile: FC<Props> = ({ profile, onSuccess }) => {
       await updateProfile({ id: profile.id, username, password, profileImage: profileImageUrl });
       onSuccess();
     } catch (e) {
-      alert('Помилка оновлення профілю');
+      setError('Помилка оновлення профілю');
     }
   };
 
@@ -72,6 +72,7 @@ const EditProfile: FC<Props> = ({ profile, onSuccess }) => {
       >
                 Зберегти зміни
       </button>
+      { error && <p className="text-red-600 mt-2">{ error }</p> }
     </div>
   );
 };

@@ -19,24 +19,113 @@ const HomePage = () => {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-2">Топ-10 корисних посилань:</h2>
+        <h2 className="text-2xl font-semibold mb-2">
+                Топ-10 корисних посилань:
+        </h2>
         <ol className="list-decimal list-inside space-y-1">
           <li>
-            <a href="https://www.budget.gov.ua/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
-                  Бюджет України
+            <a
+              href="https://www.budget.gov.ua/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+                        Бюджет України
             </a>
           </li>
-          <li><a href="https://www.minfin.com.ua/ua/currency/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Курс валют – Мінфін</a></li>
-          <li><a href="https://www.finance.ua/ua/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Фінансові новини – Finance.ua</a></li>
-          <li><a href="https://privatbank.ua/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Приват24</a></li>
-          <li><a href="https://monobank.ua/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Монобанк</a></li>
-          <li><a href="https://finance.yahoo.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Yahoo Finance</a></li>
-          <li><a href="https://www.investopedia.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Investopedia (англ.)</a></li>
-          <li><a href="https://www.rada.gov.ua/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Законодавство про фінанси</a></li>
-          <li><a href="https://bank.gov.ua/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Національний банк України</a></li>
-          <li><a href="https://www.budgetwithbuckets.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Інструменти бюджетування (англ.)</a></li>
+          <li>
+            <a
+              href="https://www.minfin.com.ua/ua/currency/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+                        Курс валют – Мінфін
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.finance.ua/ua/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+                        Фінансові новини – Finance.ua
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://privatbank.ua/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+                        Приват24
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://monobank.ua/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+                        Монобанк
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://finance.yahoo.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+                        Yahoo Finance
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.investopedia.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+                        Investopedia (англ.)
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.rada.gov.ua/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+                        Законодавство про фінанси
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://bank.gov.ua/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+                        Національний банк України
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.budgetwithbuckets.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+                        Інструменти бюджетування (англ.)
+            </a>
+          </li>
         </ol>
       </section>
+
     </main>
   );
 };

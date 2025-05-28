@@ -23,7 +23,7 @@ const CurrencyConverter = () => {
 
   const handleConvert = () => {
     const amt = parseFloat(amount);
-    if (isNaN(amt)) {
+    if (Number.isNaN(amt)) {
       setResult('Введіть коректну суму.');
       return;
     }
@@ -32,7 +32,9 @@ const CurrencyConverter = () => {
       .then((res) => res.json())
       .then((data) => {
         const converted = (amt * data.conversion_rate).toFixed(2);
-        setResult(`${amt} ${fromCurrency} = ${converted} ${toCurrency}`);
+        setResult(
+          `${amt} ${fromCurrency} = ${converted} ${toCurrency}`,
+        );
       })
       .catch(() => setResult('Помилка при конвертації.'));
   };
@@ -50,16 +52,39 @@ const CurrencyConverter = () => {
           onChange={ (e) => setAmount(e.target.value) }
         />
 
-        <select className="border px-2 py-2 rounded w-full sm:w-32" value={ fromCurrency } onChange={ (e) => setFromCurrency(e.target.value) }>
-          { currencies.map((c) => <option key={ c } value={ c }>{ c }</option>) }
+        <select
+          className="border px-2 py-2 rounded w-full sm:w-32"
+          value={ fromCurrency }
+          onChange={ (e) => setFromCurrency(e.target.value) }
+        >
+          {
+            currencies.map((c) => (
+              <option key={ c } value={ c }>
+                { c }
+              </option>
+            ))
+          }
         </select>
 
-        <select className="border px-2 py-2 rounded w-full sm:w-32" value={ toCurrency } onChange={ (e) => setToCurrency(e.target.value) }>
-          { currencies.map((c) => <option key={ c } value={ c }>{ c }</option>) }
+        <select
+          className="border px-2 py-2 rounded w-full sm:w-32"
+          value={ toCurrency }
+          onChange={ (e) => setToCurrency(e.target.value) }
+        >
+          {
+            currencies.map((c) => (
+              <option key={ c } value={ c }>
+                { c }
+              </option>
+            ))
+          }
         </select>
 
-        <button onClick={ handleConvert } className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Конвертувати
+        <button
+          onClick={ handleConvert }
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
+                    Конвертувати
         </button>
       </div>
 

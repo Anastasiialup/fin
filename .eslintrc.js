@@ -1,4 +1,5 @@
 module.exports = {
+  ignorePatterns: ['.next/', 'node_modules/', 'build/'],
   env: {
     jest: true,
     node: true,
@@ -189,12 +190,17 @@ module.exports = {
   },
   overrides: [
     {
-      files: [
-        '**/*.stories.*',
-      ],
+      files: ['**/*.stories.*'],
       rules: {
         'import/no-anonymous-default-export': 'off',
       },
     },
+    {
+      files: ['**/*.test.ts', '**/*.test.tsx', '**/__tests__/**/*'],
+      rules: {
+        'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+      },
+    },
   ],
 };
+

@@ -3,7 +3,7 @@ import { auth } from 'lib/auth';
 
 const Home = async () => {
   const session = await auth();
-  console.log(session);
+  // console.log(session);
 
   return (
     <div className="text-3xl font-bold underline p-6">
@@ -19,14 +19,14 @@ const Home = async () => {
           <div className="space-y-6">
             <div>
               <p className="mb-2 text-lg">Якщо у вас немає аккаунту:</p>
-              <Link href="/registration">
-                <a className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Реєстрація</a>
+              <Link href="/registration" className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                    Реєстрація
               </Link>
             </div>
             <div>
               <p className="mb-2 text-lg">Якщо у вас вже є аккаунт:</p>
               <Link href="/login">
-                <a className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Логін</a>
+                Логін
               </Link>
             </div>
           </div>

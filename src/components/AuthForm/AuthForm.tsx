@@ -1,19 +1,18 @@
 import { FC, useState } from 'react';
 
-export type AuthFormData = {
-  email: string;
-  password: string;
-};
-
-type AuthFormSubmitCallbackType = (data: AuthFormData) => Promise<void>;
-type AuthFormCancelCallbackType = () => void;
-
 type AuthFormPropsType = {
-  submitCallback: AuthFormSubmitCallbackType;
-  cancelCallback: AuthFormCancelCallbackType;
+  submitCallback: (data: { email: string; password: string }) => Promise<void>;
+  cancelCallback: () => void;
+  onGoogleSignIn: () => Promise<void>;
+  onGitHubSignIn: () => Promise<void>;
 };
 
-const AuthForm: FC<AuthFormPropsType> = ({ submitCallback, cancelCallback }) => {
+const AuthForm: FC<AuthFormPropsType> = ({
+  submitCallback,
+  cancelCallback,
+  onGoogleSignIn,
+  onGitHubSignIn,
+}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,7 +40,7 @@ const AuthForm: FC<AuthFormPropsType> = ({ submitCallback, cancelCallback }) => 
 
       <div className="mb-4">
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-          Email
+            Email
         </label>
         <input
           type="text"
@@ -55,7 +54,7 @@ const AuthForm: FC<AuthFormPropsType> = ({ submitCallback, cancelCallback }) => 
 
       <div className="mb-6">
         <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-          Password
+            Password
         </label>
         <input
           type="password"
@@ -67,26 +66,41 @@ const AuthForm: FC<AuthFormPropsType> = ({ submitCallback, cancelCallback }) => 
         />
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between mb-6">
         <button
           type="button"
           onClick={ cancelCallback }
           className="px-4 py-2 text-gray-700 border border-gray-300 rounded-md hover:bg-gray-100"
         >
-          Cancel
+            Cancel
         </button>
         <button
           type="submit"
           disabled={ !isValid || isSubmitting }
           className={
             `px-4 py-2 text-white rounded-md ${
-              isValid && !isSubmitting
-                ? 'bg-blue-600 hover:bg-blue-700'
-                : 'bg-blue-300 cursor-not-allowed'
+              isValid && !isSubmitting ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-300 cursor-not-allowed'
             }`
           }
         >
           { isSubmitting ? 'Verifying...' : 'Verify' }
+        </button>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <button
+          type="button"
+          onClick={ onGoogleSignIn }
+          className="w-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+        >
+            Sign in with Google
+        </button>
+        <button
+          type="button"
+          onClick={ onGitHubSignIn }
+          className="w-full px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-900"
+        >
+            Sign in with GitHub
         </button>
       </div>
     </form>

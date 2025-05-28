@@ -15,6 +15,34 @@ type AuthCredentials = {
   profileImage: string;
 };
 
+export const signInWithGoogle = async () => {
+  try {
+    const result = await signIn('google', { redirect: false });
+
+    if (result?.error) {
+      return { success: false, error: result.error };
+    }
+    return { redirectLink: result, success: true };
+  } catch (error) {
+    console.log(error, 'SignIn error');
+    return { success: false, error: 'SignIn error' };
+  }
+};
+
+export const signInWithGitHub = async () => {
+  try {
+    const result = await signIn('github', { redirect: false });
+
+    if (result?.error) {
+      return { success: false, error: result.error };
+    }
+    return { redirectLink: result.url, success: true };
+  } catch (error) {
+    console.log(error, 'SignIn error');
+    return { success: false, error: 'SignIn error' };
+  }
+};
+
 export const signInWithCredentials = async (params: Pick<AuthCredentials, 'email' | 'password'>) => {
   const { email, password } = params;
 
@@ -31,8 +59,8 @@ export const signInWithCredentials = async (params: Pick<AuthCredentials, 'email
 
     return { success: true };
   } catch (error) {
-    console.log(error, 'Signup error');
-    return { success: false, error: 'Signup error' };
+    console.log(error, 'Signin error');
+    return { success: false, error: 'Signin error' };
   }
 };
 
