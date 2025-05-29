@@ -3,10 +3,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '../../../../../database/drizzle';
 import { categories } from '../../../../../database/schema';
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
   try {
-    const id = Number(params.id);
-    if (Number.isNaN(id)) {
+    const { id } = await params;
+    const numericId = Number(id);
+    if (Number.isNaN(numericId)) {
       return new Response('Invalid ID', { status: 400 });
     }
 
@@ -15,7 +19,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     const updated = await db
       .update(categories)
       .set(data)
-      .where(eq(categories.id, id))
+      .where(eq(categories.id, numericId))
       .returning();
 
     if (!updated.length) {
@@ -28,16 +32,20 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
   try {
-    const id = Number(params.id);
-    if (Number.isNaN(id)) {
+    const { id } = await params;
+    const numericId = Number(id);
+    if (Number.isNaN(numericId)) {
       return new Response('Invalid ID', { status: 400 });
     }
 
     const deleted = await db
       .delete(categories)
-      .where(eq(categories.id, id))
+      .where(eq(categories.id, numericId))
       .returning();
 
     if (!deleted.length) {

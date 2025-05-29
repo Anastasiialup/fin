@@ -3,19 +3,19 @@ import { NextResponse } from 'next/server';
 import { db } from '../../../../../database/drizzle';
 import { categories, financialRecords } from '../../../../../database/schema';
 
-export async function GET(req: Request, { params }: { params: { userId: string } }) {
-  const userId = Number(params.userId);
+export async function GET(req: Request, { params }: { params: Promise<{ userId: string }> }) {
+  const { userId } = await params;
+  const id = Number(userId);
 
-  if (!userId) {
+  if (!id) {
     return NextResponse.json({ error: 'User ID required' }, { status: 400 });
   }
 
-  // Витягуємо всі записи користувача
   const records = await db
     .select()
     .from(financialRecords)
     .leftJoin(categories, eq(financialRecords.categoryId, categories.id))
-    .where(eq(financialRecords.userId, userId));
+    .where(eq(financialRecords.userId, id));
 
   let totalIncome = 0;
   let totalExpense = 0;
