@@ -74,12 +74,12 @@ const CategoriesList = () => {
         filteredCategories.length === 0 ? (
           <p>Категорій не знайдено</p>
         ) : (
-          <ul className="space-y-2">
+          <ul className="flex flex-col gap-4">
             {
               filteredCategories.map((cat) => (
                 <li
                   key={ cat.id }
-                  className="border p-4 rounded-lg shadow-sm relative"
+                  className="border p-4 rounded-lg shadow-sm flex flex-col gap-1"
                   style={ { borderLeft: `4px solid ${cat.color}` } }
                 >
                   <h3 className="text-lg font-bold">{ cat.name }</h3>
@@ -91,7 +91,7 @@ const CategoriesList = () => {
                   </p>
                   <button
                     onClick={ () => handleDelete(cat.id) }
-                    className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-sm"
+                    className="text-red-500 hover:underline text-sm self-start mt-2"
                   >
                       Видалити
                   </button>

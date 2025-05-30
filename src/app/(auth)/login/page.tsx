@@ -19,8 +19,8 @@ const Page = () => {
         cancelCallback={ handleCancelAuthForm }
         onGoogleSignIn={ handleVerifyWithGoogle }
         onGitHubSignIn={ handleVerifyWithGitHub }
+        onSignOut={ () => signOut() } // ✅ додаємо
       />
-      <button onClick={ () => signOut() }>Sign out</button>
     </div>
   );
 };

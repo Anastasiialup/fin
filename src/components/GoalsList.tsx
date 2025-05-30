@@ -50,13 +50,13 @@ const GoalsList = () => {
   if (error) return <p>{ error }</p>;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <h2 className="text-xl font-semibold">Мої цілі</h2>
       {
         goals.length === 0 ? (
           <p>Цілей поки немає</p>
         ) : (
-          <ul className="space-y-2">
+          <ul className="space-y-6">
             {
               goals.map((goal) => (
                 <li
@@ -66,40 +66,47 @@ const GoalsList = () => {
                   <Image
                     src={
                       goal.photo
-                            || `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}/goals/default.png`
+                                    || `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}/goals/default.png`
                     }
                     alt={ goal.name }
                     width={ 64 }
                     height={ 64 }
-                    className="rounded-full object-cover"
+                    className="rounded-full object-cover w-16 h-16"
                   />
                   <div className="flex-1">
                     <h3 className="text-lg font-bold">{ goal.name }</h3>
                     <p className="text-gray-600">{ goal.description }</p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-700">
                       { goal.price } { goal.currency }
                     </p>
                     <p className="text-sm text-gray-400">
-                        Статус: { goal.status === GoalStatuses.achieved ? 'Досягнута' : 'Не завершена' }
+                                    Статус:{ ' ' }
+                      { goal.status === GoalStatuses.achieved ? 'Досягнута' : 'Не завершена' }
                     </p>
-                  </div>
-                  <div className="flex gap-2">
-                    {
-                      goal.status !== GoalStatuses.achieved && (
-                        <button
-                          onClick={ () => handleComplete(goal.id) }
-                          className="text-sm bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
-                        >
-                            Завершити
-                        </button>
-                      )
-                    }
-                    <button
-                      onClick={ () => handleDelete(goal.id) }
-                      className="text-sm bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
-                    >
-                        Видалити
-                    </button>
+                    <div className="flex gap-6 mt-2 text-sm">
+                      {
+                        goal.status !== GoalStatuses.achieved && (
+                          <span
+                            onClick={ () => handleComplete(goal.id) }
+                            className="underline cursor-pointer text-green-600"
+                            role="button"
+                            tabIndex={ 0 }
+                            onKeyDown={ (e) => e.key === 'Enter' && handleComplete(goal.id) }
+                          >
+                      Завершити
+                          </span>
+                        )
+                      }
+                      <span
+                        onClick={ () => handleDelete(goal.id) }
+                        className="underline cursor-pointer text-red-600"
+                        role="button"
+                        tabIndex={ 0 }
+                        onKeyDown={ (e) => e.key === 'Enter' && handleDelete(goal.id) }
+                      >
+                    Видалити
+                      </span>
+                    </div>
                   </div>
                 </li>
               ))

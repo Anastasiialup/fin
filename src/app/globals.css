@@ -77,6 +77,656 @@ footer {
   font-weight: 500;
 }
 
+/* Логин */
+/* Auth form enhancements */
+.auth-form-wrapper {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 2.5rem;
+  margin: 3rem auto;
+  border-radius: 1rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  max-width: 420px;
+  width: 90%;
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease;
+}
+
+.auth-form-wrapper:hover {
+  transform: translateY(-3px);
+}
+
+.auth-form-wrapper h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+
+.auth-form-wrapper label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #444;
+}
+
+.auth-form-wrapper input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.auth-form-wrapper input:focus {
+  border-color: #705d5d;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  outline: none;
+}
+
+.auth-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.auth-form-buttons button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel {
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.btn-cancel:hover {
+  background: #e2e2e2;
+}
+
+.btn-submit {
+  background: #705d5d;
+  color: white;
+  border: none;
+}
+
+.btn-submit:hover {
+  background: #403131;
+}
+
+.btn-submit:disabled {
+  background: #dac7c7;
+  cursor: not-allowed;
+}
+
+.auth-social-buttons button {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  padding: 10px 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.auth-social-buttons .google {
+  background: #ea4335;
+  color: white;
+}
+
+.auth-social-buttons .google:hover {
+  background: #c63427;
+}
+
+.auth-social-buttons .github {
+  background: #24292e;
+  color: white;
+}
+
+.auth-social-buttons .github:hover {
+  background: #1b1f23;
+}
+
+/* Реєстрація */
+/* Registration form styles */
+.register-form-wrapper {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2.5rem;
+  margin: 3rem auto;
+  border-radius: 1rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  max-width: 420px;
+  width: 90%;
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease;
+}
+
+.register-form-wrapper:hover {
+  transform: translateY(-3px);
+}
+
+.register-form-wrapper h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+
+.register-form-wrapper label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #444;
+}
+
+.register-form-wrapper input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.register-form-wrapper input:focus {
+  border-color: #705d5d;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  outline: none;
+}
+
+.register-form-buttons {
+  display: flex;
+  justify-content: center; /* Центруємо кнопку */
+  margin-top: 1rem;
+}
+
+.register-form-buttons button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.register-btn-submit {
+  background: #705d5d;
+  color: white;
+  border: none;
+}
+
+.register-btn-submit:hover {
+  background: #493838;
+}
+
+.register-btn-submit:disabled {
+  background: #705d5d;
+  cursor: not-allowed;
+}
+
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: transparent;
+  padding: 2rem;
+}
+
+
+.form-box {
+  background-color: rgba(255, 255, 255, 0.5);
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 480px;
+  width: 100%;
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #1f2937;
+}
+
+.form-text {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.form-subtext {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #6b7280;
+}
+
+.form-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #374151;
+}
+
+.form-label {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-green {
+  background-color: #705d5d;
+}
+
+.btn-green:hover {
+  background-color: #3c2e2e;
+}
+
+.btn-blue {
+  background-color: #705d5d;
+}
+
+.btn-blue:hover {
+  background-color: #3c2e2e;
+}
+
+.btn-emerald {
+  background-color: #705d5d;
+}
+
+.btn-emerald:hover {
+  background-color: #3c2e2e;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+}
+
+.form-box {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 64rem; /* ~max-w-4xl */
+  margin-bottom: 2.5rem; /* Відступ між формами */
+}
+
+.wallet-container {
+  max-width: 768px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.wallet-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.wallet-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.wallet-box {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 1.25rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wallet-box label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.wallet-box p {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #111;
+}
+
+.about-form {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.about-form h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #1f2937; /* gray-800 */
+  margin-bottom: 1rem;
+}
+
+.about-form p {
+  color: #374151; /* gray-700 */
+  margin-bottom: 0.75rem;
+}
+
+.about-form a {
+  color: #2563eb; /* blue-600 */
+  text-decoration: underline;
+}
+
+.about-form a:hover {
+  text-decoration: none;
+}
+
+
+.profile-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffffff;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.profile-info p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  color: #333;
+  width: 100%;
+}
+
+.profile-info strong {
+  color: #000000;
+}
+
+input[type="text"],
+input[type="username"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  margin: 0.5rem 0 1rem 0;
+  border: 1.5px solid #cbd5e1; /* світло-сірий */
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+input.custom-input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input.custom-input:focus {
+  border-color: #2563eb; /* синій відтінок */
+  outline: none;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+}
+
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+}
+
+.profile-container {
+  background-color: rgba(255, 255, 255, 0.5);
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 480px;
+  width: 100%;
+  margin-left: 250px;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.profile-info p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.btn-signout {
+  margin-top: 25px;
+  padding: 10px 20px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-signout:hover {
+  background-color: #b91c1c;
+}
+
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  border-color: #4f46e5; /* фіолетовий */
+  outline: none;
+  box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #4f46e5;
+  color: white;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3730a3;
+}
+
+/* Для кнопки виходу - червона */
+.btn-signout {
+  background-color: #ef4444;
+}
+
+.btn-signout:hover {
+  background-color: #dc2626;
+}
+
+
+/* global.css */
+
+/* Основні стилі для таблиць */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #514633; /* gray-300 */
+}
+
+th, td {
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+th {
+  background-color: #f3f4f6; /* gray-100 */
+  cursor: pointer;
+}
+
+input {
+  border: 1px solid #d1d5db;
+  padding: 0.25rem 0.5rem;
+  outline: none;
+}
+
+input:focus {
+  border-color: #705d5d; /* blue-600 */
+}
+
+/* Кнопки */
+button {
+  cursor: pointer;
+}
+
+button.text-blue-600 {
+  color: #705d5d;
+  background: none;
+  border: none;
+}
+
+button.text-blue-600:hover {
+  text-decoration: underline;
+}
+
+button.text-red-600 {
+  color: #dc2626;
+  background: none;
+  border: none;
+}
+
+button.text-red-600:hover {
+  text-decoration: underline;
+}
+
+button.bg-red-600 {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+button.bg-red-600:hover {
+  background-color: #b91c1c;
+}
+
+button.bg-gray-300 {
+  background-color: #d1d5db;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+button.bg-gray-300:hover {
+  background-color: #9ca3af;
+}
+
+/* Модалка */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Додаткове */
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.space-x-2 > :not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+
 /* Toast */
 .Toastify .Toastify__toast--success {
   background: #79b981;

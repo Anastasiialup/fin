@@ -13,7 +13,6 @@ const Page = () => {
 
   return (
     <div>
-      <h1>This is goals page</h1>
       <GoalsList key={ refreshTrigger } />
       <AddGoalClientWrapper onGoalCreated={ handleGoalCreated } />
     </div>

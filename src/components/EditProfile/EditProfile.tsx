@@ -53,13 +53,13 @@ const EditProfile: FC<Props> = ({ profile, onSuccess }) => {
   return (
     <div className="space-y-2">
       <input
-        className="border px-2 py-1 w-full"
+        className="custom-input"
         value={ username }
         onChange={ (e) => setUsername(e.target.value) }
         placeholder="Імʼя"
       />
       <input
-        className="border px-2 py-1 w-full"
+        className="custom-input"
         type="password"
         value={ password }
         onChange={ (e) => setPassword(e.target.value) }

@@ -41,7 +41,6 @@ const AddCategory: FC<AddCategoryPropsType> = ({ userId, onCategoryCreated }) =>
       onSubmit={ handleSubmit }
       className="max-w-md mx-auto mt-8 bg-white p-6 rounded-2xl shadow-md space-y-4 border"
     >
-      <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">Додати категорію</h2>
 
       <div>
         <label className="block text-gray-700 font-medium mb-1">Назва</label>

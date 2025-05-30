@@ -32,9 +32,7 @@ const CurrencyConverter = () => {
       .then((res) => res.json())
       .then((data) => {
         const converted = (amt * data.conversion_rate).toFixed(2);
-        setResult(
-          `${amt} ${fromCurrency} = ${converted} ${toCurrency}`,
-        );
+        setResult(`${amt} ${fromCurrency} = ${converted} ${toCurrency}`);
       })
       .catch(() => setResult('Помилка при конвертації.'));
   };
@@ -43,17 +41,17 @@ const CurrencyConverter = () => {
     <div className="mt-6 p-4 border rounded-lg shadow-sm bg-white">
       <h2 className="text-xl font-semibold mb-4">Конвертер валют</h2>
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
         <input
           type="number"
-          className="border px-3 py-2 rounded w-full sm:w-32"
+          className="border px-3 py-2 rounded flex-1"
           placeholder="Сума"
           value={ amount }
           onChange={ (e) => setAmount(e.target.value) }
         />
 
         <select
-          className="border px-2 py-2 rounded w-full sm:w-32"
+          className="border px-2 py-2 rounded flex-1"
           value={ fromCurrency }
           onChange={ (e) => setFromCurrency(e.target.value) }
         >
@@ -67,7 +65,7 @@ const CurrencyConverter = () => {
         </select>
 
         <select
-          className="border px-2 py-2 rounded w-full sm:w-32"
+          className="border px-2 py-2 rounded flex-1"
           value={ toCurrency }
           onChange={ (e) => setToCurrency(e.target.value) }
         >
@@ -82,7 +80,7 @@ const CurrencyConverter = () => {
 
         <button
           onClick={ handleConvert }
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="text-blue-600 hover:underline text-sm flex-shrink-0"
         >
                     Конвертувати
         </button>

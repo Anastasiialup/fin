@@ -1,27 +1,27 @@
 const HomePage = () => {
   return (
-    <main className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">Фінансовий планувальник</h1>
-      <p className="mb-6 text-lg">
-          Цей застосунок допоможе вам контролювати доходи та витрати, планувати бюджет і досягати фінансових цілей.
-      </p>
+    <main className="page-wrapper flex-col">
+      <form className="form-box">
+        <h1 className="text-3xl font-bold mb-4">Фінансовий планувальник</h1>
+        <p className="mb-6 text-lg">
+            Цей застосунок допоможе вам контролювати доходи та витрати, планувати бюджет і досягати фінансових цілей.
+        </p>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">Основні функції:</h2>
-        <ul className="list-disc list-inside space-y-1">
-          <li>Ведення обліку доходів і витрат</li>
-          <li>Категоризація транзакцій</li>
-          <li>Додавання вкладень до фінансових записів</li>
-          <li>Перегляд статистики по місяцях і роках</li>
-          <li>Фільтрація записів за типом, категорією, місяцем і роком</li>
-          <li>Графіки для візуалізації витрат і надходжень</li>
-        </ul>
-      </section>
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-2">Основні функції:</h2>
+          <ul className="list-disc list-inside space-y-1">
+            <li>Ведення обліку доходів і витрат</li>
+            <li>Категоризація транзакцій</li>
+            <li>Додавання вкладень до фінансових записів</li>
+            <li>Перегляд статистики по місяцях і роках</li>
+            <li>Фільтрація записів за типом, категорією, місяцем і роком</li>
+            <li>Графіки для візуалізації витрат і надходжень</li>
+          </ul>
+        </section>
+      </form>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-2">
-                Топ-10 корисних посилань:
-        </h2>
+      <form className="form-box">
+        <h2 className="text-2xl font-semibold mb-2">Топ-10 корисних посилань:</h2>
         <ol className="list-decimal list-inside space-y-1">
           <li>
             <a
@@ -30,7 +30,7 @@ const HomePage = () => {
               rel="noopener noreferrer"
               className="text-blue-600 underline"
             >
-                        Бюджет України
+                Бюджет України
             </a>
           </li>
           <li>
@@ -40,7 +40,7 @@ const HomePage = () => {
               rel="noopener noreferrer"
               className="text-blue-600 underline"
             >
-                        Курс валют – Мінфін
+                Курс валют – Мінфін
             </a>
           </li>
           <li>
@@ -50,7 +50,7 @@ const HomePage = () => {
               rel="noopener noreferrer"
               className="text-blue-600 underline"
             >
-                        Фінансові новини – Finance.ua
+                Фінансові новини – Finance.ua
             </a>
           </li>
           <li>
@@ -60,7 +60,7 @@ const HomePage = () => {
               rel="noopener noreferrer"
               className="text-blue-600 underline"
             >
-                        Приват24
+                Приват24
             </a>
           </li>
           <li>
@@ -70,7 +70,7 @@ const HomePage = () => {
               rel="noopener noreferrer"
               className="text-blue-600 underline"
             >
-                        Монобанк
+                Монобанк
             </a>
           </li>
           <li>
@@ -80,7 +80,7 @@ const HomePage = () => {
               rel="noopener noreferrer"
               className="text-blue-600 underline"
             >
-                        Yahoo Finance
+                Yahoo Finance
             </a>
           </li>
           <li>
@@ -90,7 +90,7 @@ const HomePage = () => {
               rel="noopener noreferrer"
               className="text-blue-600 underline"
             >
-                        Investopedia (англ.)
+                Investopedia (англ.)
             </a>
           </li>
           <li>
@@ -100,7 +100,7 @@ const HomePage = () => {
               rel="noopener noreferrer"
               className="text-blue-600 underline"
             >
-                        Законодавство про фінанси
+                Законодавство про фінанси
             </a>
           </li>
           <li>
@@ -110,7 +110,7 @@ const HomePage = () => {
               rel="noopener noreferrer"
               className="text-blue-600 underline"
             >
-                        Національний банк України
+                Національний банк України
             </a>
           </li>
           <li>
@@ -120,12 +120,11 @@ const HomePage = () => {
               rel="noopener noreferrer"
               className="text-blue-600 underline"
             >
-                        Інструменти бюджетування (англ.)
+                Інструменти бюджетування (англ.)
             </a>
           </li>
         </ol>
-      </section>
-
+      </form>
     </main>
   );
 };

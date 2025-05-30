@@ -5,6 +5,7 @@ type AuthFormPropsType = {
   cancelCallback: () => void;
   onGoogleSignIn: () => Promise<void>;
   onGitHubSignIn: () => Promise<void>;
+  onSignOut?: () => Promise<void>;
 };
 
 const AuthForm: FC<AuthFormPropsType> = ({
@@ -12,6 +13,7 @@ const AuthForm: FC<AuthFormPropsType> = ({
   cancelCallback,
   onGoogleSignIn,
   onGitHubSignIn,
+  onSignOut,
 }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,7 +24,10 @@ const AuthForm: FC<AuthFormPropsType> = ({
   const handleSubmit = async () => {
     if (!isValid) return;
     setIsSubmitting(true);
-    await submitCallback({ email, password });
+    await submitCallback({
+      email,
+      password,
+    });
     setIsSubmitting(false);
   };
 
@@ -34,76 +39,77 @@ const AuthForm: FC<AuthFormPropsType> = ({
           handleSubmit();
         }
       }
-      className="bg-white p-8 rounded-xl shadow-md w-full max-w-md"
+      className="auth-form-wrapper"
     >
-      <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
+      <h2>Увійти в аккаунт</h2>
 
-      <div className="mb-4">
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email
-        </label>
+      <div>
+        <label htmlFor="email">Email</label>
         <input
-          type="text"
+          type="email"
           id="email"
-          className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
           value={ email }
           onChange={ (e) => setEmail(e.target.value) }
           required
         />
       </div>
 
-      <div className="mb-6">
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-            Password
-        </label>
+      <div>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
-          className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
           value={ password }
           onChange={ (e) => setPassword(e.target.value) }
           required
         />
       </div>
-
-      <div className="flex justify-between mb-6">
+      <div className="auth-form-buttons flex gap-2 justify-end mt-4">
         <button
           type="button"
           onClick={ cancelCallback }
-          className="px-4 py-2 text-gray-700 border border-gray-300 rounded-md hover:bg-gray-100"
+          className="btn-cancel"
         >
-            Cancel
+          Cancel
         </button>
         <button
           type="submit"
           disabled={ !isValid || isSubmitting }
-          className={
-            `px-4 py-2 text-white rounded-md ${
-              isValid && !isSubmitting ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-300 cursor-not-allowed'
-            }`
-          }
+          className="btn-submit"
         >
           { isSubmitting ? 'Verifying...' : 'Verify' }
         </button>
+        {
+          onSignOut && (
+            <button
+              type="button"
+              onClick={ onSignOut }
+              className="btn-submit"
+            >
+              Sign Out
+            </button>
+          )
+        }
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="auth-social-buttons">
         <button
           type="button"
           onClick={ onGoogleSignIn }
-          className="w-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+          className="google"
         >
-            Sign in with Google
+                    Sign in with Google
         </button>
         <button
           type="button"
           onClick={ onGitHubSignIn }
-          className="w-full px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-900"
+          className="github"
         >
-            Sign in with GitHub
+                    Sign in with GitHub
         </button>
       </div>
     </form>
+
   );
 };
 

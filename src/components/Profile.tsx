@@ -24,24 +24,28 @@ const ProfileComponent: FC<Props> = ({ profile, onProfileUpdated }) => {
   const profileImageUrl = profile.profileImage || `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}/default.png`;
 
   return (
-    <div className="space-y-4">
-      <img
-        src={ profileImageUrl }
-        alt="Profile"
-        className="w-32 h-32 rounded-full object-cover"
-      />
-      <p><strong>Імʼя:</strong> { profile.username }</p>
-      <p><strong>Email:</strong> { profile.email }</p>
-      <p><strong>Дата створення:</strong> { new Date(profile.createdAt).toLocaleDateString() }</p>
+    <div className="profile-wrapper">
+      <div className="profile-container">
+        <img
+          src={ profileImageUrl }
+          alt="Profile"
+          className="profile-image"
+        />
+        <div className="profile-info">
+          <p><strong>Імʼя:</strong> { profile.username }</p>
+          <p><strong>Email:</strong> { profile.email }</p>
+          <p><strong>Дата створення:</strong> { new Date(profile.createdAt).toLocaleDateString() }</p>
+        </div>
 
-      <EditProfileClientWrapper profile={ profile } onSuccess={ onProfileUpdated } />
+        <EditProfileClientWrapper profile={ profile } onSuccess={ onProfileUpdated } />
 
-      <button
-        onClick={ handleSignOut }
-        className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
-      >
-                Вийти з профілю
-      </button>
+        <button
+          onClick={ handleSignOut }
+          className="btn-signout"
+        >
+            Вийти з профілю
+        </button>
+      </div>
     </div>
   );
 };

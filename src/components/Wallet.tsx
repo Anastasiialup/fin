@@ -32,12 +32,26 @@ const Wallet = ({ userId }: Props) => {
   if (!summary) return null;
 
   return (
-    <div className="space-y-4 p-4 max-w-md mx-auto bg-white rounded shadow">
-      <h2 className="text-xl font-bold">Гаманець</h2>
-      <p><strong>Загальна сума:</strong> { summary.totalAmount.toFixed(2) }</p>
-      <p><strong>Надходження:</strong> { summary.totalIncome.toFixed(2) }</p>
-      <p><strong>Витрати:</strong> { summary.totalExpense.toFixed(2) }</p>
-      <p><strong>Заощадження:</strong> { summary.totalSavings.toFixed(2) }</p>
+    <div className="wallet-container">
+      <h2 className="wallet-title">Гаманець</h2>
+      <div className="wallet-grid">
+        <form className="wallet-box">
+          <label>Загальна сума</label>
+          <p>{ summary.totalAmount.toFixed(2) }</p>
+        </form>
+        <form className="wallet-box">
+          <label>Надходження</label>
+          <p>{ summary.totalIncome.toFixed(2) }</p>
+        </form>
+        <form className="wallet-box">
+          <label>Витрати</label>
+          <p>{ summary.totalExpense.toFixed(2) }</p>
+        </form>
+        <form className="wallet-box">
+          <label>Заощадження</label>
+          <p>{ summary.totalSavings.toFixed(2) }</p>
+        </form>
+      </div>
     </div>
   );
 };

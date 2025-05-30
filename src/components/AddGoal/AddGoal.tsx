@@ -73,7 +73,7 @@ const AddGoal: FC<AddGoalPropsType> = ({ userId, onGoalCreated }) => {
   return (
     <form
       onSubmit={ handleSubmit }
-      className="max-w-md mx-auto mt-8 bg-white p-6 rounded-2xl shadow-md space-y-4 border"
+      className="max-w-md mx-auto mt-16 bg-white p-6 rounded-2xl shadow-md space-y-4 border"
     >
       <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">Додати ціль</h2>
 

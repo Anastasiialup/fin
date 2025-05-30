@@ -12,14 +12,8 @@ type FinancialRecordListProps = {
 type SortDirection = 'asc' | 'desc';
 
 const Modal: FC<{ onClose: () => void; children: React.ReactNode }> = ({ onClose, children }) => (
-  <div
-    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-    onClick={ onClose }
-  >
-    <div
-      className="bg-white p-6 rounded shadow-lg"
-      onClick={ (e) => e.stopPropagation() }
-    >
+  <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center" onClick={ onClose }>
+    <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-md" onClick={ (e) => e.stopPropagation() }>
       { children }
     </div>
   </div>
@@ -42,7 +36,6 @@ const FinancialRecordList: FC<FinancialRecordListProps> = ({ refreshTrigger, onE
         errorToast('Помилка завантаження фінансових записів');
       }
     }
-
     loadRecords();
   }, [refreshTrigger]);
 
@@ -87,83 +80,45 @@ const FinancialRecordList: FC<FinancialRecordListProps> = ({ refreshTrigger, onE
   });
 
   return (
-    <div className="overflow-x-auto">
-      <div className="mb-4 flex gap-4 flex-wrap">
-        <input
-          placeholder="Сума"
-          className="border px-2 py-1"
-          onChange={ (e) => handleFilterChange('amount', e.target.value) }
-        />
-        <input
-          placeholder="Валюта"
-          className="border px-2 py-1"
-          onChange={ (e) => handleFilterChange('currency', e.target.value) }
-        />
-        <input
-          placeholder="Тип"
-          className="border px-2 py-1"
-          onChange={ (e) => handleFilterChange('type', e.target.value) }
-        />
-        <input
-          placeholder="Категорія"
-          className="border px-2 py-1"
-          onChange={ (e) => handleFilterChange('categoryName', e.target.value) }
-        />
-        <input
-          placeholder="Місяць"
-          className="border px-2 py-1"
-          onChange={ (e) => handleFilterChange('month', e.target.value) }
-        />
-        <input
-          placeholder="Рік"
-          className="border px-2 py-1"
-          onChange={ (e) => handleFilterChange('year', e.target.value) }
-        />
+    <div className="overflow-x-auto p-4">
+      <div className="mb-4 flex flex-wrap gap-3">
+        {
+          ['amount', 'currency', 'type', 'categoryName', 'month', 'year'].map((key) => (
+            <input
+              key={ key }
+              placeholder={ key === 'categoryName' ? 'Категорія' : key[0].toUpperCase() + key.slice(1) }
+              className="border border-gray-300 rounded px-3 py-1 shadow-sm text-sm"
+              onChange={ (e) => handleFilterChange(key as keyof FinancialRecord, e.target.value) }
+            />
+          ))
+        }
       </div>
-      <table className="w-full table-auto border-collapse border border-gray-300">
-        <thead className="bg-gray-100">
+      <table className="w-full table-auto border-collapse shadow rounded overflow-hidden">
+        <thead className="bg-gray-100 text-left text-sm">
           <tr>
-            <th
-              onClick={ () => handleSort('amount') }
-              className="cursor-pointer border px-4 py-2"
-            >
-              Сума 🔍
-            </th>
-            <th
-              onClick={ () => handleSort('currency') }
-              className="cursor-pointer border px-4 py-2"
-            >
-              Валюта 🔍
-            </th>
-            <th className="border px-4 py-2">Опис</th>
-            <th
-              onClick={ () => handleSort('type') }
-              className="cursor-pointer border px-4 py-2"
-            >
-              Тип 🔍
-            </th>
-            <th
-              onClick={ () => handleSort('categoryName') }
-              className="cursor-pointer border px-4 py-2"
-            >
-              Категорія 🔍
-            </th>
-            <th
-              onClick={ () => handleSort('month') }
-              className="cursor-pointer border px-4 py-2"
-            >
-              Місяць 🔍
-            </th>
-            <th
-              onClick={ () => handleSort('year') }
-              className="cursor-pointer border px-4 py-2"
-            >
-              Рік 🔍
-            </th>
-            <th className="border px-4 py-2">Дії</th>
+            {
+              [
+                ['amount', 'Сума'],
+                ['currency', 'Валюта'],
+                [null, 'Опис'],
+                ['type', 'Тип'],
+                ['categoryName', 'Категорія'],
+                ['month', 'Місяць'],
+                ['year', 'Рік'],
+                [null, 'Дії'],
+              ].map(([key, label], index) => (
+                <th
+                  key={ index }
+                  className="border px-4 py-2 font-medium cursor-pointer whitespace-nowrap"
+                  onClick={ () => key && handleSort(key as keyof FinancialRecord) }
+                >
+                  { label } { key ? '🔍' : '' }
+                </th>
+              ))
+            }
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-sm">
           {
             sortedRecords.map((rec) => (editingId === rec.id ? (
               <tr key={ rec.id }>
@@ -181,30 +136,21 @@ const FinancialRecordList: FC<FinancialRecordListProps> = ({ refreshTrigger, onE
                 </td>
               </tr>
             ) : (
-              <tr key={ rec.id }>
+              <tr key={ rec.id } className="hover:bg-gray-50 transition">
                 <td className="border px-4 py-2">{ rec.amount }</td>
                 <td className="border px-4 py-2">{ rec.currency }</td>
                 <td className="border px-4 py-2">{ rec.description ?? '-' }</td>
                 <td className="border px-4 py-2">{ rec.type }</td>
-                <td
-                  className="border px-4 py-2"
-                  style={ { color: rec.categoryColor ?? 'inherit' } }
-                >
+                <td className="border px-4 py-2" style={ { color: rec.categoryColor ?? 'inherit' } }>
                   { rec.categoryName ?? '-' }
                 </td>
                 <td className="border px-4 py-2">{ rec.month }</td>
                 <td className="border px-4 py-2">{ rec.year }</td>
                 <td className="border px-4 py-2 space-x-2">
-                  <button
-                    className="text-blue-600 hover:underline"
-                    onClick={ () => setEditingId(rec.id) }
-                  >
+                  <button className="text-blue-600 hover:underline" onClick={ () => setEditingId(rec.id) }>
                         Редагувати
                   </button>
-                  <button
-                    className="text-red-600 hover:underline"
-                    onClick={ () => setConfirmDeleteId(rec.id) }
-                  >
+                  <button className="text-red-600 hover:underline" onClick={ () => setConfirmDeleteId(rec.id) }>
                         Видалити
                   </button>
                 </td>
@@ -217,10 +163,10 @@ const FinancialRecordList: FC<FinancialRecordListProps> = ({ refreshTrigger, onE
       {
         confirmDeleteId !== null && (
           <Modal onClose={ () => setConfirmDeleteId(null) }>
-            <p className="mb-4">Ви впевнені, що хочете видалити цей запис?</p>
+            <p className="mb-4 text-sm">Ви впевнені, що хочете видалити цей запис?</p>
             <div className="flex justify-end gap-4">
               <button
-                className="px-4 py-2 bg-red-600 text-white rounded"
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
                 onClick={
                   () => {
                     handleDelete(confirmDeleteId);
@@ -231,7 +177,7 @@ const FinancialRecordList: FC<FinancialRecordListProps> = ({ refreshTrigger, onE
                   Так
               </button>
               <button
-                className="px-4 py-2 bg-gray-300 rounded"
+                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
                 onClick={ () => setConfirmDeleteId(null) }
               >
                   Ні

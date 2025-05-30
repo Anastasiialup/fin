@@ -24,8 +24,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # - name: Run build
-      #  run: npm run build
+      - name: Run build
+        run: npm run build
 
       # Якщо є тести — розкоментуй:
       # - name: Run tests
