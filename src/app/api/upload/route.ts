@@ -1,11 +1,9 @@
 // app/api/upload/route.ts
 import ImageKit from 'imagekit';
 import { NextRequest, NextResponse } from 'next/server';
-// eslint-disable-next-line
-console.log(process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!);
 
 const imagekit = new ImageKit({
-  publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
+  publicKey: process.env.IMAGEKIT_PUBLIC_KEY!,
   privateKey: process.env.IMAGEKIT_PRIVATE_KEY!,
   urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!,
 });

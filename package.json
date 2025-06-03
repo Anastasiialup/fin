@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "echo $NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY && next build",
+    "build": "next build",
     "start": "next start",
     "test": "jest --coverage",
     "lint": "tsc --noEmit && eslint \"*/**/*.{js,ts,tsx}\" --max-warnings=0",
