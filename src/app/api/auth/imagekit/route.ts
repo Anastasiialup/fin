@@ -1,5 +1,7 @@
 import ImageKit from 'imagekit';
 import { NextResponse } from 'next/server';
+// eslint-disable-next-line
+console.log(process.env.IMAGEKIT_PUBLIC_KEY!);
 
 const imagekit = new ImageKit({
   publicKey: process.env.IMAGEKIT_PUBLIC_KEY!,
